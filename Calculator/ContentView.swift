@@ -89,7 +89,7 @@ struct ContentView: View {
                                         height: self.buttonHeight()
                                     )
                                     .background(item.buttonColor)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(self.fontColorForButton(item: item))
                                     .cornerRadius(self.buttonWidth(item: item)/2)
                             })
                         }
@@ -149,6 +149,15 @@ struct ContentView: View {
             }
         }
     }
+
+    func fontColorForButton(item: CalcButton) -> Color {
+    switch item {
+    case .clear, .negative, .percent:
+        return Color.black
+    default:
+        return Color.white
+    }
+}
 
     func buttonWidth(item: CalcButton) -> CGFloat {
         if item == .zero {
